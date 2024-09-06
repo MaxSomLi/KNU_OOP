@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1725526233 source:c:\program files\codeblocks\1-1.8\main.cpp
+1725653118 source:c:\program files\codeblocks\1-1.8\main.cpp
 	<SFML/Graphics.hpp>
+	<iostream>
 
 1641324135 c:\program files\codeblocks\2ea46c8702c3ddeeea56976b96a8454abd9901db\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
