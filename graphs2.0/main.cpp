@@ -213,11 +213,8 @@ public:
         }
         int edgesSize = edges.size();
         for (int i = 0; i < edgesSize; i++)
-            if (!edges[i]->getWillBeInTree())
-            {
+            while (!edges[i]->getWillBeInTree())
                 deleteEdge(edges[i]);
-                i--;
-            }
     }
     void drawOnApp(RenderWindow &app)
     {
@@ -238,12 +235,12 @@ public:
 };
 int main()
 {
-    RenderWindow app(VideoMode(800, 800), "Graph handling");
-    RenderTexture graphTexture, treeTexture;
+    RenderWindow app(VideoMode(800, 800), "Graph handling", Style::Titlebar | Style::Close);
+    RenderTexture graphTexture, treesTexture;
     graphTexture.create(800, 800);
-    treeTexture.create(800, 800);
+    treesTexture.create(800, 800);
     graphTexture.clear();
-    treeTexture.clear();
+    treesTexture.clear();
     int x = Mouse::getPosition(app).x, y = Mouse::getPosition(app).y, nodeIndex, edgeIndex;
     Graph graph;
     double xd, yd, dist;
@@ -262,7 +259,7 @@ int main()
             {
                 graph.makeGraphDrawing(graphTexture, "resulting-graph.png");
                 graph.makeIntoTree();
-                graph.makeGraphDrawing(graphTexture, "resulting-trees.png");
+                graph.makeGraphDrawing(treesTexture, "resulting-trees.png");
                 app.close();
             }
         x = Mouse::getPosition(app).x;
@@ -290,23 +287,24 @@ int main()
             if (isStartSelected)
             {
                 isStartSelected = 0;
-                if (nodeIndex > -1 && graph.getNodes()[nodeIndex] != start)
+                if (nodeIndex > -1)
                 {
-                    edgeIndex = graph.getIndexOfConnectingEdge(start, graph.getNodes()[nodeIndex]);
-                    if (edgeIndex > -1)
-                        graph.deleteEdge(start->getEdges()[edgeIndex]);
-                    else
+                    if (graph.getNodes()[nodeIndex] != start)
                     {
-                        xd = start->getCoords().x - graph.getNodes()[nodeIndex]->getCoords().x;
-                        yd = start->getCoords().y - graph.getNodes()[nodeIndex]->getCoords().y;
-                        dist = sqrt(xd*xd + yd*yd);
-                        graph.addEdge(dist, start, graph.getNodes()[nodeIndex]);
+                        edgeIndex = graph.getIndexOfConnectingEdge(start, graph.getNodes()[nodeIndex]);
+                        if (edgeIndex > -1)
+                            graph.deleteEdge(start->getEdges()[edgeIndex]);
+                        else
+                        {
+                            xd = start->getCoords().x - graph.getNodes()[nodeIndex]->getCoords().x;
+                            yd = start->getCoords().y - graph.getNodes()[nodeIndex]->getCoords().y;
+                            dist = sqrt(xd*xd + yd*yd);
+                            graph.addEdge(dist, start, graph.getNodes()[nodeIndex]);
+                        }
                     }
                 }
-                if (graph.getNodes()[nodeIndex] == start)
-                    isStartSelected = 1;
             }
-            else
+            else if (nodeIndex > -1)
             {
                 isStartSelected = 1;
                 start = graph.getNodes()[nodeIndex];

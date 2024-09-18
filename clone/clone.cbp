@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="clone" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/clone" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/clone" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-DSFML_STATIC" />
+			<Add directory="C:/Program Files/CodeBlocks/2ea46c8702c3ddeeea56976b96a8454abd9901db/include" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/cccc" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/pccts" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/pccts/antlr" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/pccts/dlg" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/pccts/h" />
+			<Add directory="C:/Program Files/CodeBlocks/clone/pccts/support" />
+		</Compiler>
+		<Linker>
+			<Add option="-static" />
+			<Add library="mingw32" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add library="sfml-graphics" />
+			<Add library="sfml-window" />
+			<Add library="sfml-system" />
+			<Add library="sfml-main" />
+			<Add library="ole32" />
+			<Add library="comdlg32" />
+			<Add directory="C:/Program Files/CodeBlocks/2ea46c8702c3ddeeea56976b96a8454abd9901db/lib" />
+		</Linker>
+		<Unit filename="main.cpp" />
+		<Unit filename="tinyfiledialogs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tinyfiledialogs.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
