@@ -410,7 +410,7 @@ int main()
     text.setCharacterSize(50);
     text.setFillColor(Color::White);
     text.setFont(font);
-    text.setString("Select a .cpp file.");
+    text.setString("Select a c++ file.");
     text.setColor(Color::Black);
     bool openExplorer = 0, isAffPressed = 0, openEditor = 0, isTextPressed = 0, isTextSelected = 0, isCapsOn = 0, isShiftOn = 0;
     int x, y, editTextY = 0, startIndex, endIndex, maxIndex, minIndex, help, len;
@@ -450,7 +450,7 @@ int main()
         if (openExplorer)
         {
             openExplorer = 0;
-            auto f = tinyfd_openFileDialog("Select .cpp file", "", 0, {}, 0, 0);
+            auto f = tinyfd_openFileDialog("Select a c++ file", "", 0, {}, 0, 0);
             if (f != NULL)
             {
                 filePath = string(f);
@@ -556,12 +556,12 @@ int main()
                 ofstream outfile(filePath);
                 outfile << fileContents;
                 outfile.close();
-                string command = "C:\\CCCC\\cccc.exe \"" + filePath + "\"";
+                string command = "cccc.exe \"" + filePath + "\"";
                 system(command.c_str());
-                ifstream fileres("C:\\Program Files\\CodeBlocks\\graphs2.0\\main.cpp");
+                ifstream fileres("graphs2.0\\main.cpp");
                 fileContents = string((istreambuf_iterator<char>(fileres)), (istreambuf_iterator<char>()));
                 fileres.close();
-                ofstream outfileres("C:\\Program Files\\CodeBlocks\\graphs2.0\\main.cpp");
+                ofstream outfileres("graphs2.0\\main.cpp");
                 outfileres << "#include \"" << filePath << "\"" << endl << fileContents;
                 outfileres.close();
                 app.close();
